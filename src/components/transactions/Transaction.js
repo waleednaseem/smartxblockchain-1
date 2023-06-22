@@ -14,7 +14,7 @@ export default function transaction() {
   return (
     <div className="flex flex-col w-[100%] h-screen">
       <div className="bg-primary text-texting rounded-2xl shadow-2xl font-extrabold px-2 py-4 my-2 mx-2 text-[20px]">
-        Upgrades
+        Transactions
       </div>
       <div className="flex flex-row justify-between mx-2">
        

@@ -10,10 +10,10 @@ export default function TransactionHistory({transactions}) {
           </div>
           <div className="border-b border-primary mx-4 w-full"></div>
         </div> */}
-        <div className="mx-2 bg-slate-100 rounded-2xl shadow-xl px-4">
+        <div className="mx-2 bg-primary rounded-2xl shadow-xl px-4">
           <div className="flex flex-row justify-between my-2 items-center roun">
             <div>
-              <div className="text-primary text-[20px] font-bold">
+              <div className="text-texting text-[20px] font-bold">
                 {transactions.reason}
               </div>
               {/* <div className="text-primary text-[18px]">{}</div> */}
@@ -22,7 +22,7 @@ export default function TransactionHistory({transactions}) {
             <div>
               <div className="flex flex-row justify-between">
                 <img src="/images/ruppe.png" className="w-6 h-4 mt-1.5" />
-                <div className="mx-2 text-green-900 font-bold text-[20px]">{transactions.payment}</div>
+                <div className="mx-2 text-texting font-bold text-[20px]">{transactions.payment}</div>
               </div>
               {/* <div className="flex justify-end mx-2 text-secondary  font-light text-sm">
                 22.00
