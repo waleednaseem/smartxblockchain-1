@@ -14,8 +14,10 @@ export default function ProductHero() {
     {/* <Slider2/>
     <Slider3/> */}
     <div className="w-[100%] rounded-lg border-2 p-2 border-primary flex justify-">
-      <div className="w-[30%] bg-red-400">123</div>
-      <div className="w-[70%] bg-blue-400 flex text-justify items-center p-5">A blockchain is a digital ledger of transactions that is duplicated and distributed across the entire network of computer systems on the blockchain. Each block in the chain contains a number of transactions and a reference to the block that came before it. This creates a permanent and unchangeable record of every transaction that has ever occurred on the blockchain.
+      <div className="w-[30%] bg-primary rounded-lg justify-center items-center flex">
+      <img className="h-40 w-40" src="images/smart(1).png" alt="/" />
+      </div>
+      <div className="w-[70%] flex text-justify items-center p-5">A blockchain is a digital ledger of transactions that is duplicated and distributed across the entire network of computer systems on the blockchain. Each block in the chain contains a number of transactions and a reference to the block that came before it. This creates a permanent and unchangeable record of every transaction that has ever occurred on the blockchain.
 
 SmartXBlockchain is utilizing the power of blockchain technology to revolutionize the way businesses operate. By providing secure and transparent transactions on our blockchain platform, SmartXBlockchain is enabling companies to streamline their operations, cut costs and improve efficiency. With SmartXBlockchain, businesses can trust that their transactions are secure, transparent and tamper-proof.
 
