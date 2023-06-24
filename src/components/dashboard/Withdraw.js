@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
 import { useDispatch,useSelector } from "react-redux";
@@ -8,6 +8,7 @@ import { toast } from 'react-toastify';
 export default function Withdraw({ setIsModalOpen }) {
   const [amount, setAmount] = useState(0);
   const [transactionFees, setTransactionFees] = useState(0);
+  const [WalletAmount, setWalletAmount] = useState(0);
   const handleAmountChange = (e) => {
     const amountValue = e.target.value;
     setAmount(amountValue);
@@ -44,6 +45,14 @@ export default function Withdraw({ setIsModalOpen }) {
     ))
     .catch(err=> console.log(err))
   }
+  useEffect(() => {
+    API.fetchGet('/wallet')
+      .then((response) => setWalletAmount(response.data.payment))
+      .catch((error) => console.log(error));
+  }, []);
+  const formatAccountBalance = (balance) => {
+    return balance.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+  };
   return (
     <div>
       <div>
@@ -83,7 +92,7 @@ export default function Withdraw({ setIsModalOpen }) {
             </div>
             <div className="flex justify-center items-center gap-1 my-4 ">
               <img className="h-7 w-7 mt-1" src="images/usdt.png" alt="" />
-              <div className="text-primary font-bold text-2xl">123.456</div>
+              <div className="text-primary font-bold text-2xl">{WalletAmount&&formatAccountBalance(WalletAmount)}</div>
             </div>
           </div>
           <div className="flex items-end justify-center sm:mb- h-[100%] ">
@@ -103,7 +112,7 @@ export default function Withdraw({ setIsModalOpen }) {
               name="amount"
               onChange={handleAmountChange}
               value={amount}
-              className="p-1 text-primary font-bold w-24 bg-purple-50 rounded-md shadow-2xl border border-primary text-center focus:outline-primary"
+              className="p-1 text-primary font-bold w-24  rounded-md shadow-2xl border border-primary text-center focus:outline-primary"
             />
           </div>
           <div className="flex justify-between">
@@ -115,7 +124,7 @@ export default function Withdraw({ setIsModalOpen }) {
                 name="transaction-fees"
                 value={transactionFees}
                 readOnly
-                className="p-1 text-primary font-bold w-24 bg-purple-50 rounded-md shadow-2xl border border-primary text-center focus:outline-primary"
+                className="p-1 text-primary font-bold w-24  rounded-md shadow-2xl border border-primary text-center focus:outline-primary"
               />
             </div>
           </div>
@@ -128,7 +137,7 @@ export default function Withdraw({ setIsModalOpen }) {
                 name="total-amount"
                 value={totalAmount}
                 readOnly
-                className="p-1 text-primary font-bold w-24 bg-purple-50 rounded-md shadow-2xl border border-primary text-center focus:outline-primary"
+                className="p-1 text-primary font-bold w-24  rounded-md shadow-2xl border border-primary text-center focus:outline-primary"
               />
             </div>
           </div>

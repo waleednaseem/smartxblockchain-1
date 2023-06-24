@@ -13,16 +13,16 @@ export default function TransactionHistory({transactions}) {
         <div className="mx-2 bg-primary rounded-2xl shadow-xl px-4">
           <div className="flex flex-row justify-between my-2 items-center roun">
             <div>
-              <div className="text-texting text-[20px] font-bold">
+              <div className="text-sm text-texting uppercase font-light">
                 {transactions.reason}
               </div>
               {/* <div className="text-primary text-[18px]">{}</div> */}
             </div>
 
             <div>
-              <div className="flex flex-row justify-between">
+              <div className="flex flex-row justify-between items-center">
                 <img src="images/USDT.png" className="w-6 h-6 mt-1 flex justify-center items-center" />
-                <div className="mx-2 text-texting font-bold text-[20px]">{transactions.payment}</div>
+                <div className="mx-2 text-texting  text-[16px]">{transactions.payment}</div>
               </div>
               {/* <div className="flex justify-end mx-2 text-secondary  font-light text-sm">
                 22.00

@@ -55,8 +55,6 @@ export default function Edit() {
        <input type={'text'} placeholder={'Full Name'} className="shadow-secondary shadow-md rounded-lg p-2 "/>
         <input type={'text'} placeholder={'Email'} className="shadow-secondary shadow-md rounded-lg p-2 "/>
         <input type={'text'} placeholder={'Phone'} className="shadow-secondary shadow-md rounded-lg p-2 "/>
-        <input type={'text'} placeholder={'USDT Wallet Address'} className="shadow-secondary shadow-md rounded-lg p-2 "/>
-        <input type={'text'} placeholder={'not'} className="invisible"/>
         <input type={'submit'} placeholder={'Submit'} className="shadow-secondary shadow-md rounded-lg p-2 bg-primary text-texting font-bold "/>
        </form>
       </div>

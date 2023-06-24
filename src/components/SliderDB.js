@@ -32,15 +32,15 @@ const slideImages = [
 export default function SliderDB() {
   return (
    <div className="shadow-2xl">
-   <div className="slide-container indicatorss  ">
-      <Slide duration={2000} easing="cubic-in" indicators={true} arrows={false}>
+   <div className="slide-container indicatorss ">
+      <Slide duration={2000} easing="cubic-in" indicators={false} arrows={false}>
         {slideImages.map((slideImage, index) => (
           <div className="each-slide sm:hello lg:hellow" key={index}>
             <div
               className="bg-[length:100%_175px] sm:bg-[length:100%_100%]"
               style={{ backgroundImage: `url(${slideImage.url})` }}
             >
-              <div className="h-[175px] sm:h-[350px]"></div>
+              <div className="h-[125px] sm:h-[350px]"></div>
             </div>
           </div>
         ))}

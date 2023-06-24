@@ -17,43 +17,16 @@ export default function transaction() {
         Transactions
       </div>
       <div className="flex flex-row justify-between mx-2">
-       
-        {/* <div className="flex justify-center">
-          <div className="mb-3 xl:w-96">
-            <input
-              type="search"
-              className="
-        form-control
-        block
-        w-full
-        px-3
-        py-4
-        text-base
-        font-normal
-        text-primary
-        bg-slate-100 bg-clip-padding
-        border-2 border-solid border-primary
-        rounded-2xl
-         transition
-        ease-in-out
-        m-0
-        focus:text-primary focus:bg-white focus:border-primary focus:outline-primary shadow-xl focus:shadow-2xl placeholder-secondary
-      "
-              id="exampleSearch"
-              placeholder="Search"
-            />
-          </div>
-        </div> */}
       </div>
 
       <div className="h-[90%] overflow-scroll pb-20">
-      {
-        transac.length > 0 && transac.map((transactions, index) =>
-          <div key={index}>
-            <TransactionHistory transactions={transactions} />
-          </div>
-        )
-      }
+        {
+          transac.length > 0 && transac.map((transactions, index) =>
+            <div key={index}>
+              <TransactionHistory transactions={transactions} />
+            </div>
+          )
+        }
       </div>
     </div>
   );
