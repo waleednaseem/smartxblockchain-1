@@ -21,7 +21,7 @@ export default function TransactionHistory({transactions}) {
 
             <div>
               <div className="flex flex-row justify-between">
-                <img src="/images/ruppe.png" className="w-6 h-4 mt-1.5" />
+                <img src="images/USDT.png" className="w-6 h-6 mt-1 flex justify-center items-center" />
                 <div className="mx-2 text-texting font-bold text-[20px]">{transactions.payment}</div>
               </div>
               {/* <div className="flex justify-end mx-2 text-secondary  font-light text-sm">

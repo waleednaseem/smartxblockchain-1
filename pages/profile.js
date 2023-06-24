@@ -19,6 +19,8 @@ import apiUrl from "../redux/services/api";
 import PlacementTreeNew from "../src/components/dashboard/PlacementTreeNew";
 import Deposit from "../src/components/dashboard/Deposit";
 import Withdraw from "../src/components/dashboard/Withdraw";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function profile() {
   const [state, setState] = useState(0);
@@ -95,12 +97,25 @@ export default function profile() {
                 <Deposit setIsModalOpen={setIsModalOpen} />
               )}
               {state == "Withdraw" && (
-                <Withdraw setIsModalOpen={setIsModalOpen} />
+                <Withdraw setIsModalOpen={setIsModalOpen} toast={toast} />
               )}
-            </Modal>
 
+            <ToastContainer
+              position="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
+            </Modal>
             <div className="flex flex-col lg:flex-row justify-center items-center">
-             <div
+
+              <div
                 onClick={() => {
                   setIsModalOpen(true), setState("Withdraw");
                 }}
@@ -187,7 +202,7 @@ export default function profile() {
             <UserTime />
             {(state == 0 && <Edit />) ||
               (state == 1 && <ResetPassword />) ||
-              (state == 2 && <PlacementTreeNew state={state}/>) ||
+              (state == 2 && <PlacementTreeNew state={state} />) ||
               (state == 3 && <Pakages />)}
           </div>
         </div>

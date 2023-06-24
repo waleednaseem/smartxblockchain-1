@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import Upgrades from "./Upgrades";
 import API from "../../API/API";
 import { useSelector } from "react-redux";
+
 export default function Plans() {
   const selectorData = useSelector(x => x)
 
@@ -57,7 +58,7 @@ export default function Plans() {
         isOpen={isModalOpen}
         ariaHideApp={false}
         onRequestClose={closeModal}
-        className={" w-[80%] h-[80%] fixed top-[10%] left-[10%] rounded-2xl "}
+        className={" w-[80%] h-[300px] fixed top-[10%] left-[10%] rounded-2xl "}
       >
         <Upgrades
           onValue={onValue}
@@ -72,7 +73,7 @@ export default function Plans() {
         {pakages.map((x, i) => (
 
           x.package == true ?
-            <div key={i} onClick={() => { setOnValue(i), setValue(x) }} className={`my-2`}>
+            <div key={i} onClick={() => { setOnValue(i), setValue(x) }} className={`my-4`}>
 
               <div
                 // onClick={() => setIsModalOpen(true)}
@@ -82,14 +83,14 @@ export default function Plans() {
               </div>
               <div
                 onClick={() => setIsModalOpen(true)}
-                className={`  bg-slate-50 rounded-b-lg  flex flex-col justify-center items-center`}
+                className={`  bg-slate-50 rounded-b-3xl  h-[75%] flex flex-col justify-center items-center`}
               >
                 <p className="text-sm lg:text-lg">{pkg_name[i]}</p>
                 <div className="w-[60%]">
                   <div className="text-sm lg:text-lg flex items-center justify-center">
                     {x.pkg_price}
                     <img
-                      className="h-5 w-5 hover:h-6 hover:w-6 "
+                      className="h-5 w-5 "
                       src="images/USDT.png"
                       alt=""
                     />
@@ -98,8 +99,21 @@ export default function Plans() {
               </div>
             </div>
             :
-            <div key={i} onClick={() => { setIsModalOpen2(true), setValue(x) }} className={`my-2 py-4 w-[95%] h-[95%] bg-white flex justify-center items-center border-4 border-primary hover:border-secondary  rounded-3xl`}>
-              <img src="images/lock.png" height={60} width={60} />
+            <div key={i} onClick={() => { setIsModalOpen2(true), setValue(x) }} className={`my-2 py-4 w-[95%] h-[100%] bg-white flex justify-evenly items-center border-4 border-primary hover:border-secondary  rounded-3xl`}>
+              <div>
+                <h1 className="text-lg font-extrabold text-primary">{pkg_name[i]}</h1>
+                <div className="flex gap-1">
+                  <p className="text-md font-bold text-secondary">{x.pkg_price}</p>
+                  <img
+                    className="h-5 w-5 "
+                    src="images/USDT.png"
+                    alt=""
+                  />
+                </div>
+              </div>
+              <div>
+                <img src="images/lock.png" height={60} width={60} />
+              </div>
             </div>
         ))}
         <Modal

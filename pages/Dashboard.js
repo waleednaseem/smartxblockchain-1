@@ -8,6 +8,7 @@ import apiUrl from "../redux/services/api";
 import SliderDB from "../src/components/SliderDB";
 import { useDispatch, useSelector } from "react-redux";
 import Api from '../src/API/API'
+import { ToastContainer } from "react-toastify";
 
 export default function Dashboard({ Token }) {
   const [data, setdata] = useState(false);
@@ -38,6 +39,18 @@ export default function Dashboard({ Token }) {
 
   return (
     <div className="flex bg-bgprimary overflow-auto h-screen bg-contain">
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <Sidebar name={name} />
       <SidebarMobile name={name} />
       {/* <SliderDB/> */}

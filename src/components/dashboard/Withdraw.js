@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { AiOutlineClose } from "react-icons/ai";
 import { IoIosArrowBack } from "react-icons/io";
 import { useDispatch,useSelector } from "react-redux";
+import API from "../../API/API";
+import { toast } from 'react-toastify';
 
 export default function Withdraw({ setIsModalOpen }) {
   const [amount, setAmount] = useState(0);
@@ -15,6 +17,33 @@ export default function Withdraw({ setIsModalOpen }) {
   const totalAmount = +amount + +transactionFees;
   const [state, setState] = useState("Balance");
   const data=useSelector(x=>x)
+  const widthdraw=()=>{
+    API.fetchPost({Withdraw_payment:totalAmount},'/withdraw')
+    .then(x=>(
+      console.log(x),
+      x.data =="You don't have enough amount"? toast.error(x.data, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      }):
+      toast.success(x.data.msg, {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })
+    ))
+    .catch(err=> console.log(err))
+  }
   return (
     <div>
       <div>
@@ -36,6 +65,7 @@ export default function Withdraw({ setIsModalOpen }) {
         </div>
         </div>
         <div className="flex sm:mx-[10%] mx-[2%] my-5 justify-between">
+        
             <div className="flex text-primary">
               Name:
               <p className="mx-2 text-primary font-bold uppercase">{data&&data.username}</p>
@@ -64,6 +94,7 @@ export default function Withdraw({ setIsModalOpen }) {
         </div>}
         
         {state == "Withdraw" && <div className="flex flex-col mx-[10%] sm:mx-[20%] h-[100%] my-10  gap-2 ">
+        
           <div className="flex justify-between">
             <div className="text-primary">Amount:</div>
             <input
@@ -102,7 +133,8 @@ export default function Withdraw({ setIsModalOpen }) {
             </div>
           </div>
           <div className="justify-center flex">
-          <button className="p-2 bg-secondary hover:bg-primary rounded-md shadow-xl cursor-pointer transform hover:scale-110 transition ease-in duration-300 hover:font-bold hover:text-texting text-texting sm:hover:border sm:hover:border-primary">
+          
+          <button onClick={()=>widthdraw()} className="p-2 bg-secondary hover:bg-primary rounded-md shadow-xl cursor-pointer transform hover:scale-110 transition ease-in duration-300 hover:font-bold hover:text-texting text-texting sm:hover:border sm:hover:border-primary">
               Withdrawal
             </button>
           </div>
