@@ -1,28 +1,64 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Sidebar from '../src/components/dashboard/Sidebar'
 import SidebarMobile from '../src/components/dashboard/SidebarMobile'
+import PlacementTreeNew from '../src/components/dashboard/PlacementTreeNew'
+import API from '../src/API/API'
+import { useDispatch, useSelector } from 'react-redux'
 
 export default function smartmatrix() {
+  const [reff, setReff] = useState('')
+
+  useEffect(() => {
+    API.fetchGet('/findrefferal')
+      .then(x => setReff(x.data))
+      .catch(x => console.log(x))
+  }, [])
+
+  const dispatch = useDispatch()
+  const data = useSelector(x => x)
+  const [values, setValues] = useState('')
+  useEffect(() => {
+    console.log(data.treeParams)
+  }, [])
   return (
 
-    <div className='flex sm:flex-row flex-col'>
-        <Sidebar/>
-        <SidebarMobile/>
-        <section className="h-screen bg-cover w-[100%]" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1619364726002-dfd4fdaee5f2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80')",}}>
-      <div className="flex h-full w-full items-center justify-center container mx-auto px-8">
-        <div className="max-w-2xl text-center">
-          <h1 className="text-3xl sm:text-5xl capitalize tracking-widest text-white lg:text-7xl">Coming Soon</h1>
-    
-          {/* <p className="mt-6 lg:text-lg text-white">You can subscribe to our newsletter, and let you know when we are back</p> */}
-    
-          {/* <div className="mt-8 flex flex-col space-y-3 sm:-mx-2 sm:flex-row sm:justify-center sm:space-y-0">
-            <input id="email" type="text" className="rounded-md border border-transparent bg-white/20 px-4 py-2 text-white placeholder-white backdrop-blur-sm focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 sm:mx-2" placeholder="Email Address" />
-    
-            <button className="transform rounded-md bg-blue-700 px-8 py-2 text-sm font-medium capitalize tracking-wide text-white transition-colors duration-200 hover:bg-blue-600 focus:bg-blue-600 focus:outline-none sm:mx-2">Notify Me</button>
-          </div> */}
+    <div className='flex h-[90%] flex-row'>
+      <div>
+        <Sidebar />
+        <SidebarMobile />
+      </div>
+      <div className='w-full'>
+        <div className='flex flex-col w-full  overflow-y-auto'>
+          <div className='flex flex-col h-96 w-full'>
+            <div className='flex justify-center items-center'>
+              <h3 className='text-primary p-5 font-bold text-lg'>Your Placements</h3>
+              <p className="text-xs md:text-base text-primary font-extrabold">Select Tree</p>
+              <select name="cars" id="cars" value={values} onChange={(e) => (setValues(e.target.value), dispatch({
+                type: 'treeParams',
+                payload: e.target.value
+              }))}>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="200">200</option>
+                <option value="350">350</option>
+              </select>
+            </div>
+            <PlacementTreeNew />
+          </div>
+        </div>
+        <div className='flex flex-col w-full overflow-y-auto'>
+          <h3 className='text-primary p-5 font-bold text-lg'>Your Refferal</h3>
+          <div className=' grid grid-cols-5 md:grid-cols-10 gap-2 p-5'>
+            {
+              reff && reff.map(x => (
+                <p className='bg-primary p-1 text-sm text-texting rounded-3xl flex justify-center items-center'>{x.User.username}</p>
+              ))
+            }
+          </div>
         </div>
       </div>
-    </section>
     </div>
   )
 }

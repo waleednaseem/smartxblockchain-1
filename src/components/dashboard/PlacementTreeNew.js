@@ -4,7 +4,7 @@ import Api from "../../API/API";
 import { useDispatch, useSelector } from "react-redux";
 import { RiFullscreenLine } from "react-icons/ri";
 
-const PlacementTreeNew = ({state}) => {
+const PlacementTreeNew = () => {
   const [user1, setUser1] = useState('');
   const [user2, setUser2] = useState('');
   const [user3, setUser3] = useState('');
@@ -6703,7 +6703,7 @@ const PlacementTreeNew = ({state}) => {
   }
   return (
     <div className="relative">
-      <div id="my-div" className="flex rounded-lg shadow-2xl h-[40%] bg-slate-100 overflow-hidden m-5">
+      <div id="my-div" className="flex rounded-lg shadow-2xl bg-slate-100 overflow-hidden m-5">
         <div className="absolute top-0 right-0 p-8">
           <button className="text-primary flex justify-center items-center" onClick={toggleFullScreen}>
             <RiFullscreenLine size={30} />

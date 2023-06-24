@@ -169,7 +169,7 @@ export default function profile() {
                 </div>
               </div>
 
-              <div
+              {/* <div
                 onClick={() => setState(2)}
                 className="flex flex-col lg:flex-row justify-center items-center"
               >
@@ -182,7 +182,7 @@ export default function profile() {
                     Refferal Team
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
 
             {/* <div
@@ -202,7 +202,7 @@ export default function profile() {
             <UserTime />
             {(state == 0 && <Edit />) ||
               (state == 1 && <ResetPassword />) ||
-              (state == 2 && <PlacementTreeNew state={state} />) ||
+              // (state == 2 && <PlacementTreeNew state={state} />) ||
               (state == 3 && <Pakages />)}
           </div>
         </div>
