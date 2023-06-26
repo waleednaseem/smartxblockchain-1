@@ -114,9 +114,9 @@ export default function Loginpage({ setState, toast }) {
             alignItems: 'center',
           }}
         >
-          <img src="images/smart (2).png" height={100} width={100} />
+          <img className="bg-primary rounded-md" src="images/smart(1).png" height={100} width={100} />
           <Typography component="h1" variant="h5">
-            Sign in
+            Sign In
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -160,8 +160,9 @@ export default function Loginpage({ setState, toast }) {
                   </Link>
                 </Grid> */}
               <Grid item>
-                <div onClick={() => setState(2)}>
-                  {"Don't have an account? Sign Up"}
+                <div className="flex sm:gap-4 gap-2 text-xs sm:text-base" >
+                  {"Don't have an account?"}
+                  <p onClick={() => setState(2)} className="bg-bgprimary text-primary px-2 hover:font-bold cursor-pointer">Sign Up</p>
                 </div>
               </Grid>
             </Grid>

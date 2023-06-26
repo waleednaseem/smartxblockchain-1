@@ -104,9 +104,10 @@ function Header12({toast}) {
           letterSpacing: ".3rem",
           color: "inherit",
           textDecoration: "none",
+          height: "30px"
         }}
       >
-        <img className="h-20 w-24" src="images/smart(1).png" alt="/" />
+        <img className="" src="images/smart(1).png" alt="/" />
       </Typography>
 
       <div className="flex text-texting ">

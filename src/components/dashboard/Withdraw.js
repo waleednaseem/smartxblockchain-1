@@ -22,7 +22,7 @@ export default function Withdraw({ setIsModalOpen }) {
     API.fetchPost({Withdraw_payment:totalAmount},'/withdraw')
     .then(x=>(
       console.log(x),
-      x.data =="You don't have enough amount"? toast.error(x.data, {
+      x.data.msg =="You don't have enough amount"||x.data.msg =="Please mention amount"? toast.error(x.data?.msg, {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: true,

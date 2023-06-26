@@ -123,7 +123,7 @@ export default function SignupPage({ setState,toast }) {
                         alignItems: 'center',
                     }}
                 >
-                    <img src="images/smart (2).png" height={100} width={100} />
+                    <img className="bg-primary rounded-md" src="images/smart(1).png" height={100} width={100} />
                     <Typography component="h1" variant="h5">
                         Sign up
                     </Typography>
@@ -175,10 +175,10 @@ export default function SignupPage({ setState,toast }) {
                         >
                             Sign Up
                         </Button>
-                        <Grid container justifyContent="flex-end">
+                        <Grid container justifyContent="flex">
                             <Grid item>
-                                <div onClick={() => setState(1)}>
-                                    Already have an account? Sign in
+                                <div className="flex sm:gap-4 gap-2 text-xs sm:text-base" >
+                                    Already have an account? <p onClick={() => setState(1)} className="bg-bgprimary text-primary px-2 hover:font-bold cursor-pointer">Sign In</p>
                                 </div>
 
                             </Grid>

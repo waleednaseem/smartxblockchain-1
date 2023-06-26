@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 
 export default function TransactionHistory({transactions}) {
   return (
@@ -13,12 +14,11 @@ export default function TransactionHistory({transactions}) {
         <div className="mx-2 bg-primary rounded-2xl shadow-xl px-4">
           <div className="flex flex-row justify-between my-2 items-center roun">
             <div>
-              <div className="text-sm text-texting uppercase font-light">
-                {transactions.reason}
+              <div className="text-sm text-texting uppercase font-light flex justify-between">
+                {transactions.reason}---<p className="">{moment(transactions.createdAt).format('llll')}</p>
               </div>
               {/* <div className="text-primary text-[18px]">{}</div> */}
             </div>
-
             <div>
               <div className="flex flex-row justify-between items-center">
                 <img src="images/USDT.png" className="w-6 h-6 mt-1 flex justify-center items-center" />
