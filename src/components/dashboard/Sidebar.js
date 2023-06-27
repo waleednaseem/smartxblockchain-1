@@ -1,24 +1,23 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { HiHome } from "react-icons/hi2";
 import { FaUserAlt } from "react-icons/fa";
 import { GrGoogleWallet } from "react-icons/gr";
 import { TbBusinessplan } from "react-icons/tb";
 import { BsCalculatorFill } from "react-icons/bs";
-import { SiHiveBlockchain } from "react-icons/si";
-import { GiTeamUpgrade } from "react-icons/gi";
+import { GiCheckboxTree } from "react-icons/gi";
+import { GiReceiveMoney } from "react-icons/gi";
 import { SlLogout } from "react-icons/sl";
 import { TfiClose } from "react-icons/tfi";
 
 
-export default function Sidebar({name}) {
+export default function Sidebar({ name }) {
   const [open, setOpen] = useState(false);
-  
+
   return (
     <div
-      className={`${
-        open ? "w-[20%]" : "w-[80px]"
-      } bg-primary h-screen hidden md:flex md:flex-col shadow-md   "id="sidenavSecExample`}
+      className={`${open ? "w-[20%]" : "w-[80px]"
+        } bg-primary h-screen hidden md:flex md:flex-col shadow-md   "id="sidenavSecExample`}
     >
       <div className="pt-4 pb-2 px-6 w-[100%]">
         <div href="#!">
@@ -64,7 +63,7 @@ export default function Sidebar({name}) {
                 </div>
               </Link>
             </li>
-            
+
             <li className="relative">
               <Link href={"/transactions"}>
                 <div
@@ -73,8 +72,8 @@ export default function Sidebar({name}) {
                   data-mdb-ripple="true"
                   data-mdb-ripple-color="primaryhover"
                 >
-                  <GiTeamUpgrade className=" mr-3" size={25} />
-                  Upgrades
+                  <GiReceiveMoney className=" mr-3" size={25} color="white" />
+                  Transactions
                 </div>
               </Link>
             </li>
@@ -86,7 +85,7 @@ export default function Sidebar({name}) {
                   data-mdb-ripple="true"
                   data-mdb-ripple-color="primaryhover"
                 >
-                  <SiHiveBlockchain className=" mr-3" size={25} />
+                  <GiCheckboxTree className=" mr-3" size={25} />
                   SMART MATRIX
                 </div>
               </Link>
@@ -133,7 +132,18 @@ export default function Sidebar({name}) {
               </Link>
             </div>
           </li>
-         
+
+          {/* <li className="relative">
+            <div
+              className="flex items-center text-sm py-12 px-6 h-12 overflow-hidden text-texting text-ellipsis whitespace-nowrap rounded hover:text-texting hover:bg-tertiary transition duration-300 ease-in-out"
+              data-mdb-ripple="true"
+              data-mdb-ripple-color="primaryhoverhover"
+            >
+              <Link href={"/transactions"}>
+                <GiReceiveMoney size={40} color="white" />
+              </Link>
+            </div>
+          </li> */}
           <li className="relative">
             <div
               className="flex items-center text-sm py-12 px-6 h-12 overflow-hidden text-texting text-ellipsis whitespace-nowrap rounded hover:text-texting hover:bg-tertiary transition duration-300 ease-in-out"
@@ -141,7 +151,7 @@ export default function Sidebar({name}) {
               data-mdb-ripple-color="primaryhoverhover"
             >
               <Link href={"/transactions"}>
-                <GiTeamUpgrade size={40} />
+                <GiReceiveMoney size={40} color="white" />
               </Link>
             </div>
           </li>
@@ -152,11 +162,11 @@ export default function Sidebar({name}) {
               data-mdb-ripple-color="primaryhoverhover"
             >
               <Link href={"/smartmatrix"}>
-                <SiHiveBlockchain size={40} />
+                <GiCheckboxTree size={40} />
               </Link>
             </div>
           </li>
-           <li className="relative">
+          <li className="relative">
             <div
               className="flex items-center text-sm py-12 px-6 h-12 overflow-hidden text-texting text-ellipsis whitespace-nowrap rounded hover:text-texting hover:bg-tertiary transition duration-300 ease-in-out"
               data-mdb-ripple="true"
@@ -170,9 +180,8 @@ export default function Sidebar({name}) {
         </ul>
       )}
       <div
-        className={`${
-          open ? "w-[16.9%]" : "w-[80px]"
-        }  text-center bottom-0 absolute w-full`}
+        className={`${open ? "w-[16.9%]" : "w-[80px]"
+          }  text-center bottom-0 absolute w-full`}
       >
         <div
           onClick={() => {

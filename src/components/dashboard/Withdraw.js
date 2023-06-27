@@ -91,7 +91,7 @@ export default function Withdraw({ setIsModalOpen }) {
               Account Balance
             </div>
             <div className="flex justify-center items-center gap-1 my-4 ">
-              <img className="h-7 w-7 mt-1" src="images/usdt.png" alt="" />
+              $
               <div className="text-primary font-bold text-2xl">{WalletAmount&&formatAccountBalance(WalletAmount)}</div>
             </div>
           </div>

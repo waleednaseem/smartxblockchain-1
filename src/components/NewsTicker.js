@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function NewsTicker() {
   return (
-    <div className="ticker-container sm:mt-[6px] sm:py-2 sm:rounded-md">
+    <div className="ticker-container py-2 sm:mt-[6px] sm:py-2 sm:rounded-md">
 <div className="ticker-wrapper">
 <div className="ticker-transition">
 <div className="ticker-item text-texting text-lg font-mono">A blockchain is a digital ledger of transactions that is duplicated and distributed across the entire network of computer systems on the blockchain. Each block in the chain contains a number of transactions and a reference to the block that came before it. This creates a permanent and unchangeable record of every transaction that has ever occurred on the blockchain.

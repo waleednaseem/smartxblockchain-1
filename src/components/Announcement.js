@@ -4,7 +4,7 @@ import NewsTicker from "./NewsTicker";
 
 export default function Announcement() {
   return (
-    <div className="flex mt-1">
+    <div className="flex mt-2 lg:mt-1">
       <div className="mt-[12px]">
         {/* <GrAnnounce color="red" size={35} /> */}
       </div>

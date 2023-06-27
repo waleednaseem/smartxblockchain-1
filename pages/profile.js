@@ -61,16 +61,10 @@ export default function profile() {
   return (
     <div className={`md:flex bg-bgsecondary  `}>
       <Sidebar name={name} />
-      {/* <div className="">
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={closeModal}
-          contentLabel="deposite"
-          className={"bg-red-500 flex items-center justify-center"}
-        ><div className="h-[400px] w-[200px]"></div></Modal>
-      </div> */}
+
 
       <div className="flex flex-row p-2 w-[100%] h-screen  overflow-hidden">
+      
         <div className="grid grid-cols-4 gap-1 w-[100%] ">
           <div className=" flex flex-col rounded-2xl shadow-2xl col-span-1 bg-slate-100 h-fit py-2 ">
             <div className=" flex items-center justify-center mt-8 ">
@@ -100,19 +94,20 @@ export default function profile() {
                 <Withdraw setIsModalOpen={setIsModalOpen} toast={toast} />
               )}
 
-            <ToastContainer
-              position="top-right"
-              autoClose={5000}
-              hideProgressBar={false}
-              newestOnTop={false}
-              closeOnClick
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="light"
-            />
+              <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+              />
             </Modal>
+
             <div className="flex flex-col lg:flex-row justify-center items-center">
 
               <div
@@ -168,37 +163,13 @@ export default function profile() {
                   </div>
                 </div>
               </div>
-
-              {/* <div
-                onClick={() => setState(2)}
-                className="flex flex-col lg:flex-row justify-center items-center"
-              >
-                <div className="flex flex-col justify-center items-center">
-                  <GiThreeFriends
-                    className="text-primary cursor-pointer"
-                    size={25}
-                  />
-                  <div className="text-sm cursor-pointer">
-                    Refferal Team
-                  </div>
-                </div>
-              </div> */}
             </div>
-
-            {/* <div
-              onClick={() => setState(3)}
-              className="flex flex-col lg:flex-row justify-center"
-            >
-              <div className="mt-4 mx-0 sm:mx-10">
-              <GiCardboardBox className="text-primary mx-9 sm:-mx-5 cursor-pointer" size={25} />
-              <div className="text-sm mx-5 sm:-mx-8 cursor-pointer">Package</div>
-            </div>
-            </div> */}
           </div>
 
           <div className="col-span-3  flex flex-col">
             <VerifyPlease />
-            <WalletSecure />
+            <WalletSecure toast={toast} />
+
             <UserTime />
             {(state == 0 && <Edit />) ||
               (state == 1 && <ResetPassword />) ||
@@ -207,6 +178,7 @@ export default function profile() {
           </div>
         </div>
       </div>
+     
       <SidebarMobile />
     </div>
   );

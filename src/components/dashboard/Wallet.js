@@ -41,9 +41,9 @@ export default function Wallet() {
         <div className="my-2 text-texting font-bold italic hover:text-white cursor-pointer">
           <div>Refferal ID: {data && data.refferalID}</div>
         </div>
-        <div className="my-2 text-texting font-bold italic hover:text-white cursor-pointer">
+        {/* <div className="my-2 text-texting font-bold italic hover:text-white cursor-pointer">
           <div>Total Team: {data && data.refferalID}</div>
-        </div>
+        </div> */}
       </div>
 
       <div className="flex flex-row justify-between px-2">

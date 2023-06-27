@@ -1,62 +1,49 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import API from '../../API/API'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Edit() {
+  const [full_name, setfullname] = useState('')
+  const [email, setemail] = useState('')
+  const [phone, setphone] = useState('')
+
+  const submitForm = (e) => {
+    e.preventDefault()
+    API.fetchPost({ full_name, email, phone }, '/update_profile')
+      .then(x => toast.success(x.data.msg, {
+        position: "top-center",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      }))
+      .catch(x => console.log(x))
+  }
   return (
     <div>
-      {/* <div>
-        <div className='flex flex-col sm:flex-row justify-between sm:p-5 m-5'>
-          <input
-            type="text"
-            className="form-control block w-[100%] sm:w-[40%] px-4 py-2 text-xl font-normal text-primary bg-white bg-clip-padding border border-solid border-gray-300 rounded-xl shadow-md focus:shadow-2xl transition ease-in-out m-0 focus:text-primary focus:bg-white focus:border-primary focus:outline-none"
-            id="exampleFormControlInput2"
-            placeholder="Email Address"
-          />
-          <input
-            type="text"
-            className="form-control block w-[100%] sm:w-[40%] mt-2 sm:mt-0 px-4 py-2 text-xl font-normal text-primary bg-white bg-clip-padding border border-solid border-gray-300 rounded-xl shadow-md focus:shadow-2xl transition ease-in-out m-0 focus:text-primary focus:bg-white focus:border-primary focus:outline-none"
-            id="exampleFormControlInput2"
-            placeholder="Full Name"
-          />
-        </div>
-        <div className='flex flex-col sm:flex-row justify-between sm:p-5 m-5 sm:-mt-10'>
-        <input
-          type="text"
-          className="form-control block w-[100%] sm:w-[40%] -mt-3 sm:mt-0 px-4 py-2 text-xl font-normal text-primary bg-white bg-clip-padding border border-solid border-gray-300 rounded-xl shadow-md focus:shadow-2xl transition ease-in-out m-0 focus:text-primary focus:bg-white focus:border-primary focus:outline-none"
-          id="exampleFormControlInput2"
-          placeholder="Phone number"
-        />
-        <input
-          type="text"
-          className="form-control block w-[100%] sm:w-[40%] mt-2 sm:mt-0 px-4 py-2 text-xl font-normal text-primary bg-white bg-clip-padding border border-solid border-gray-300 rounded-xl shadow-md focus:shadow-2xl transition ease-in-out m-0 focus:text-primary focus:bg-white focus:border-primary focus:outline-none"
-          id="exampleFormControlInput2"
-          placeholder="JazzCash Account"
-        />
-        </div>
-        
-       <div className='flex-col sm:flex-row m-5 sm:p-5 sm:-mt-10 flex justify-between'>
-       <input
-          type="text"
-          className="form-control block w-[100%] sm:w-[40%] -mt-3 sm:mt-0 px-4 py-2 text-xl font-normal text-primary bg-white bg-clip-padding border border-solid border-gray-300 rounded-xl shadow-md focus:shadow-2xl transition ease-in-out m-0 focus:text-primary focus:bg-white focus:border-primary focus:outline-none"
-          // id="exampleFormControlInput2"
-          placeholder="EasyPaisa Account"
-        />
-       <input
-  type="submit"
-  className="form-control block w-[40%] sm:w-auto mt-2 sm:mt-0 ml-16 sm:-ml-0 mr-[12%] px-4 py-2 text-xl font-normal text-texting bg-primary border border-primary rounded-2xl shadow-md focus:shadow-2xl transition ease-in-out m-0 cursor-pointer"
-  // id="exampleFormControlInput2"
-  placeholder="EasyPaisa Account"
-/>
-
-       </div>
-        <div className='mt-[100%] sm:mt-[0%]'></div>
-      </div> */}
+      <ToastContainer
+        position="bottom-left"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <div >
-       <form className='grid md:grid-cols-2 gap-2 m-2'>
-       <input type={'text'} placeholder={'Full Name'} className="shadow-secondary shadow-md rounded-lg p-2 "/>
-        <input type={'text'} placeholder={'Email'} className="shadow-secondary shadow-md rounded-lg p-2 "/>
-        <input type={'text'} placeholder={'Phone'} className="shadow-secondary shadow-md rounded-lg p-2 "/>
-        <input type={'submit'} placeholder={'Submit'} className="shadow-secondary shadow-md rounded-lg p-2 bg-primary text-texting font-bold "/>
-       </form>
+        <form onSubmit={submitForm} className='grid md:grid-cols-2 gap-2 m-2'>
+          <input type={'text'} onChange={e => setfullname(e.target.value)} placeholder={'Full Name'} className="shadow-secondary shadow-md rounded-lg p-2 " />
+          <input type={'text'} onChange={e => setemail(e.target.value)} placeholder={'Email'} className="shadow-secondary shadow-md rounded-lg p-2 " />
+          <input type={'text'} onChange={e => setphone(e.target.value)} placeholder={'Phone'} className="shadow-secondary shadow-md rounded-lg p-2 " />
+          <input type={'submit'} placeholder={'Submit'} className="shadow-secondary shadow-md rounded-lg p-2 bg-primary text-texting font-bold " />
+        </form>
       </div>
     </div>
   )
