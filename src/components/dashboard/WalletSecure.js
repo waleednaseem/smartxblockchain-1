@@ -5,21 +5,21 @@ import API from "../../API/API";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function WalletSecure({ toast }) {
-  const [active, setActivate] = useState("")
+export default function WalletSecure({ toast,active, setActivate }) {
+  // const [active, setActivate] = useState("")
   const [verifynow, setverifynow] = useState(false)
   const [refresh, setrefresh] = useState('')
   const [code, setverifycode] = useState('')
-  useEffect(() => {
-    API.fetchGet('/activate')
-      .then(x => setActivate(x.data.msg))
-      .catch(x => console.log(x))
-  }, [])
-  useEffect(() => {
-    API.fetchGet('/activate')
-      .then(x => setActivate(x.data.msg))
-      .catch(x => console.log(x))
-  }, [refresh])
+  // useEffect(() => {
+  //   API.fetchGet('/activate')
+  //     .then(x => setActivate(x.data.msg))
+  //     .catch(x => console.log(x))
+  // }, [])
+  // useEffect(() => {
+  //   API.fetchGet('/activate')
+  //     .then(x => setActivate(x.data.msg))
+  //     .catch(x => console.log(x))
+  // },[refresh])
   const doMail = (e) => {
     e.preventDefault()
     API.fetchGet('/verify-email')
@@ -43,7 +43,7 @@ export default function WalletSecure({ toast }) {
           draggable: true,
           progress: undefined,
           theme: "light",
-        }),setverifynow(true),setrefresh('hrue'))
+        }), setverifynow(true), setrefresh('hrue'))
         x.data.message == 'Failed to send verification email' && toast.error(x.data.message, {
           position: "top-center",
           autoClose: 1000,
@@ -56,22 +56,22 @@ export default function WalletSecure({ toast }) {
         })
       })
       .catch(x => console.log(x))
-      
+
   }
-  const verifyCode=(e)=>{
+  const verifyCode = (e) => {
     e.preventDefault()
-    API.fetchPost({code},'/verify-code')
-    .then(x=>(toast.success(x.data.msg, {
-      position: "top-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    })) ,setverifynow(false))
-    .catch(x=>console.log(x))
+    API.fetchPost({ code }, '/verify-code')
+      .then(x => (toast.success(x.data.msg, {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      })), setverifynow(false),setActivate("activated"))
+      .catch(x => console.log(x))
   }
   return (
     <div className="grid p-2 rounded-2xl shadow-lg bg-primary grid-cols-4 w-[100%]">
@@ -100,11 +100,11 @@ export default function WalletSecure({ toast }) {
           {/* <p className="text-sm text-texting">
             <BsTelephoneForwardFill />
           </p> */}
-          {!verifynow ? <button onClick={doMail} className="text-sm  text-texting">
+          {!verifynow ? active!="activated"&& <button onClick={doMail} className="text-sm  text-texting">
             <ImMail2 />
           </button> :
             <form onSubmit={verifyCode}>
-              <input type="text" placeholder="Verification code" onChange={e=>setverifycode(e.target.value)} className="p-1  rounded-lg" />
+              <input type="text" placeholder="Verification code" onChange={e => setverifycode(e.target.value)} className="p-1  rounded-lg" />
             </form>}
         </div>
       </div>

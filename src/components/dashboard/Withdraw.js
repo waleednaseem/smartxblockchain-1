@@ -9,6 +9,7 @@ export default function Withdraw({ setIsModalOpen }) {
   const [amount, setAmount] = useState(0);
   const [transactionFees, setTransactionFees] = useState(0);
   const [WalletAmount, setWalletAmount] = useState(0);
+  const [loading, setloading] = useState(false);
   const handleAmountChange = (e) => {
     const amountValue = e.target.value;
     setAmount(amountValue);
@@ -19,9 +20,10 @@ export default function Withdraw({ setIsModalOpen }) {
   const [state, setState] = useState("Balance");
   const data=useSelector(x=>x)
   const widthdraw=()=>{
+    setloading(true),
     API.fetchPost({Withdraw_payment:totalAmount},'/withdraw')
     .then(x=>(
-      console.log(x),
+      
       x.data.msg =="You don't have enough amount"||x.data.msg =="Please mention amount"? toast.error(x.data?.msg, {
         position: "top-right",
         autoClose: 2000,
@@ -32,7 +34,7 @@ export default function Withdraw({ setIsModalOpen }) {
         progress: undefined,
         theme: "light",
       }):
-      toast.success(x.data.msg, {
+      (toast.success(x.data.msg, {
         position: "top-right",
         autoClose: 3000,
         hideProgressBar: false,
@@ -41,7 +43,7 @@ export default function Withdraw({ setIsModalOpen }) {
         draggable: true,
         progress: undefined,
         theme: "light",
-      })
+      }),setloading(false))
     ))
     .catch(err=> console.log(err))
   }
@@ -143,9 +145,9 @@ export default function Withdraw({ setIsModalOpen }) {
           </div>
           <div className="justify-center flex">
           
-          <button onClick={()=>widthdraw()} className="p-2 bg-secondary hover:bg-primary rounded-md shadow-xl cursor-pointer transform hover:scale-110 transition ease-in duration-300 hover:font-bold hover:text-texting text-texting sm:hover:border sm:hover:border-primary">
+          {loading==true?'loading...':<button onClick={()=>widthdraw()} className="p-2 bg-secondary hover:bg-primary rounded-md shadow-xl cursor-pointer transform hover:scale-110 transition ease-in duration-300 hover:font-bold hover:text-texting text-texting sm:hover:border sm:hover:border-primary">
               Withdrawal
-            </button>
+            </button>}
           </div>
         </div>}
       </div>

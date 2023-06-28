@@ -9,11 +9,12 @@ import { GiCheckboxTree } from "react-icons/gi";
 import { GiReceiveMoney } from "react-icons/gi";
 import { SlLogout } from "react-icons/sl";
 import { TfiClose } from "react-icons/tfi";
+import { useSelector } from "react-redux";
 
 
 export default function Sidebar({ name }) {
   const [open, setOpen] = useState(false);
-
+  const data = useSelector((state) => state);
   return (
     <div
       className={`${open ? "w-[20%]" : "w-[80px]"
@@ -24,7 +25,7 @@ export default function Sidebar({ name }) {
           <div className="flex items-center">
             <div onClick={() => setOpen(!open)} className="shrink-0">
               <img
-                src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp"
+                src="images/smart(1).png"
                 className="rounded-full cursor-pointer w-10"
                 alt="Avatar"
               />
@@ -32,7 +33,7 @@ export default function Sidebar({ name }) {
             <div className="flex flex-row justify-between items-center px-2 w-[100%]">
               {open && (
                 <div className="hidden sm:flex uppercase cursor-pointer text-sm text-texting ">
-                  {name}
+                  {data&&data.username}
                 </div>
               )}
               {open && (

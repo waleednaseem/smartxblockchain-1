@@ -21,12 +21,23 @@ import Deposit from "../src/components/dashboard/Deposit";
 import Withdraw from "../src/components/dashboard/Withdraw";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import API from "../src/API/API";
+import { useSelector,useDispatch } from "react-redux";
 
 export default function profile() {
+  const [active, setActivate] = useState("")
   const [state, setState] = useState(0);
   const [modalIsOpen, setIsOpen] = useState(false);
-
+  const datas = useSelector((state) => state);
+  const dispatch=useDispatch()
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+
+  useEffect(() => {
+    API.fetchGet('/activate')
+      .then(x => setActivate(x.data.msg))
+      .catch(x => console.log(x))
+  },[])
 
   function openModal() {
     setIsOpen(true);
@@ -50,13 +61,16 @@ export default function profile() {
     setdata(decode);
     console.log(data);
   }, []);
+  console.log(data,'<==');
 
-  // useEffect(()=>{
-  //   axios.post(apiUrl+'/userDetail',{
-  //     id:data.id
-  //   })
-  //   .then(x=> setname(x.data.username))
-  // },[data])
+  useEffect(()=>{
+    API.fetchGet('/finduserdetail')
+    .then(x=>(setname(x.data.users.username),dispatch({
+      type:"username",
+      payload:x.data.users.username
+    })))
+    .catch(x=>console.log(x))
+  },[data])
 
   return (
     <div className={`md:flex bg-bgsecondary  `}>
@@ -69,13 +83,13 @@ export default function profile() {
           <div className=" flex flex-col rounded-2xl shadow-2xl col-span-1 bg-slate-100 h-fit py-2 ">
             <div className=" flex items-center justify-center mt-8 ">
               <img
-                src="https://mdbcdn.b-cdn.net/img/new/avatars/8.webp"
+                src="images/smart(1).png"
                 className="rounded-full w-10"
                 alt="Avatar"
               />
             </div>
             <div className=" items-center uppercase justify-center mt-4 hidden md:flex">
-              <div>{name}</div>
+              <div>{name&&name}</div>
             </div>
 
             <div className=" my-2 mx-2 border-b border-primary"></div>
@@ -167,8 +181,8 @@ export default function profile() {
           </div>
 
           <div className="col-span-3  flex flex-col">
-            <VerifyPlease />
-            <WalletSecure toast={toast} />
+            {active!='activated'&&<VerifyPlease  />}
+            <WalletSecure toast={toast} active={active} setActivate={setActivate}/>
 
             <UserTime />
             {(state == 0 && <Edit />) ||
