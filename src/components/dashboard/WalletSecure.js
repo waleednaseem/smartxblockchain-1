@@ -5,7 +5,7 @@ import API from "../../API/API";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-export default function WalletSecure({ toast,active, setActivate }) {
+export default function WalletSecure({ toast, active, setActivate }) {
   // const [active, setActivate] = useState("")
   const [verifynow, setverifynow] = useState(false)
   const [refresh, setrefresh] = useState('')
@@ -61,16 +61,33 @@ export default function WalletSecure({ toast,active, setActivate }) {
   const verifyCode = (e) => {
     e.preventDefault()
     API.fetchPost({ code }, '/verify-code')
-      .then(x => (toast.success(x.data.msg, {
-        position: "top-center",
-        autoClose: 2000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      })), setverifynow(false),setActivate("activated"))
+      .then(x => {
+
+
+        // console.log(x)
+        x.data.msg == 'Verified successfully !' ? (
+          setActivate("activated"),
+          setverifynow(false),
+          toast.success(x.data.msg, {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          })) : toast.error("Invalid code please try again", {
+            position: "top-center",
+            autoClose: 1000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          })
+      })
       .catch(x => console.log(x))
   }
   return (
@@ -100,7 +117,7 @@ export default function WalletSecure({ toast,active, setActivate }) {
           {/* <p className="text-sm text-texting">
             <BsTelephoneForwardFill />
           </p> */}
-          {!verifynow ? active!="activated"&& <button onClick={doMail} className="text-sm  text-texting">
+          {!verifynow ? active != "activated" && <button onClick={doMail} className="text-sm  text-texting">
             <ImMail2 />
           </button> :
             <form onSubmit={verifyCode}>

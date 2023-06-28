@@ -5,7 +5,7 @@ const initstate = {
   placement:null,
   DirectReff:null,
   setModalmsg:null,
-  treeParams:null
+  treeParams:10
 };
 export default function Reducer(state = initstate, action) {
   switch (action.type) {
