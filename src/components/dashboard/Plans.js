@@ -3,6 +3,7 @@ import Modal from "react-modal";
 import Upgrades from "./Upgrades";
 import API from "../../API/API";
 import { useSelector } from "react-redux";
+import {AiFillLock} from 'react-icons/ai'
 
 export default function Plans() {
   const selectorData = useSelector(x => x)
@@ -73,7 +74,7 @@ export default function Plans() {
         {pakages.map((x, i) => (
 
           x.package == true ?
-            <div key={i} onClick={() => { setOnValue(i), setValue(x) }} className={`my-4`}>
+            <div key={i} onClick={() => { setOnValue(i), setValue(x) }} className={`my-2`}>
 
               <div
                 // onClick={() => setIsModalOpen(true)}
@@ -83,7 +84,7 @@ export default function Plans() {
               </div>
               <div
                 onClick={() => setIsModalOpen(true)}
-                className={`  bg-slate-50 rounded-b-3xl  h-[75%] flex flex-col justify-center items-center`}
+                className={`  bg-slate-50 rounded-b-3xl py-2  h-[75%] flex flex-col justify-center items-center`}
               >
                 <p className="text-sm lg:text-lg">{pkg_name[i]}</p>
                 <div className="w-[60%]">
@@ -99,20 +100,29 @@ export default function Plans() {
               </div>
             </div>
             :
-            <div key={i} onClick={() => { setIsModalOpen2(true), setValue(x) }} className={`my-2 py-4 w-[95%] h-[100%] bg-white flex justify-evenly items-center border-4 border-primary hover:border-secondary  rounded-3xl`}>
-              <div>
-                <h1 className="text-lg font-extrabold text-primary">{pkg_name[i]}</h1>
-                <div className="flex gap-1">
-                  <p className="text-md font-bold text-secondary">{x.pkg_price}</p>
-                  <img
-                    className="h-5 w-5 "
-                    src="images/USDT.png"
-                    alt=""
-                  />
-                </div>
+            <div key={i} onClick={() => { setIsModalOpen2(true), setValue(x) }} className={`my-2`}>
+               <div
+                // onClick={() => setIsModalOpen(true)}
+                className="flex-col sm:rounded-t-lg rounded-t-2xl py-2 bg-primary text-texting flex justify-center items-center text-sm lg:text-base hover:text-white"
+              >
+                <p className="-my-1">Purchase package</p>
               </div>
-              <div>
-                <img src="images/lock.png" height={60} width={60} />
+              <div
+                onClick={() => setIsModalOpen(true)}
+                className={`  bg-slate-50 rounded-b-3xl py-2  h-[75%] flex flex-col justify-center items-center`}
+              >
+                <p className="text-sm text-primary font-extrabold lg:text-lg">{pkg_name[i]}</p>
+                <div className="w-[60%]">
+                  <div className="text-sm lg:text-lg flex items-center justify-center">
+                    {x.pkg_price}
+                    <img
+                      className="h-5 w-5 "
+                      src="images/USDT.png"
+                      alt=""
+                    />
+                    <AiFillLock/>
+                  </div>
+                </div>
               </div>
             </div>
         ))}

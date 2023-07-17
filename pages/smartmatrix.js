@@ -31,19 +31,22 @@ export default function smartmatrix() {
         <div className='flex flex-col w-full  overflow-y-auto'>
           <div className='flex flex-col h-96 w-full'>
             <div className='flex justify-center items-center'>
-              <h3 className='text-primary p-5 font-bold text-lg'>Your Placements</h3>
-              <p className="text-xs md:text-base text-primary font-extrabold">Select Tree</p>
-              <select name="cars" id="cars" value={values} onChange={(e) => (setValues(e.target.value), dispatch({
-                type: 'treeParams',
-                payload: e.target.value
-              }))}>
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="50">50</option>
-                <option value="100">100</option>
-                <option value="200">200</option>
-                <option value="350">350</option>
-              </select>
+              <div className='bg-primary text-primary w-full flex justify-center items-center flex-col'>
+                <h3 className='text-white p-1 font-bold  text-2xl'>Your Placements</h3>
+                <p className="text-xs md:text-base text-white font-extrabold">Select Tree</p>
+                <select name="cars" id="cars" className='w-full border border-primary' value={values} onChange={(e) => (setValues(e.target.value), dispatch({
+                  type: 'treeParams',
+                  payload: e.target.value
+                }))}>
+                  <option value="10">10</option>
+                  <option value="20">20</option>
+                  <option value="50">50</option>
+                  <option value="100">100</option>
+                  <option value="200">200</option>
+                  <option value="350">350</option>
+                </select>
+              </div>
+
             </div>
             <PlacementTreeNew />
           </div>

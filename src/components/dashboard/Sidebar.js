@@ -5,8 +5,8 @@ import { FaUserAlt } from "react-icons/fa";
 import { GrGoogleWallet } from "react-icons/gr";
 import { TbBusinessplan } from "react-icons/tb";
 import { BsCalculatorFill } from "react-icons/bs";
-import { GiCheckboxTree } from "react-icons/gi";
-import { GiReceiveMoney } from "react-icons/gi";
+import { MdEmojiPeople } from "react-icons/md";
+import {GiTakeMyMoney}  from "react-icons/gi";
 import { SlLogout } from "react-icons/sl";
 import { TfiClose } from "react-icons/tfi";
 import { useSelector } from "react-redux";
@@ -73,7 +73,7 @@ export default function Sidebar({ name }) {
                   data-mdb-ripple="true"
                   data-mdb-ripple-color="primaryhover"
                 >
-                  <GiReceiveMoney className=" mr-3" size={25} color="white" />
+                  <GiTakeMyMoney className=" mr-3" size={25} color="white" />
                   Transactions
                 </div>
               </Link>
@@ -86,7 +86,7 @@ export default function Sidebar({ name }) {
                   data-mdb-ripple="true"
                   data-mdb-ripple-color="primaryhover"
                 >
-                  <GiCheckboxTree className=" mr-3" size={25} />
+                  <MdEmojiPeople className=" mr-3" size={25} />
                   SMART MATRIX
                 </div>
               </Link>
@@ -141,7 +141,7 @@ export default function Sidebar({ name }) {
               data-mdb-ripple-color="primaryhoverhover"
             >
               <Link href={"/transactions"}>
-                <GiReceiveMoney size={40} color="white" />
+                <GiTakeMyMoney size={40} color="white" />
               </Link>
             </div>
           </li> */}
@@ -152,7 +152,7 @@ export default function Sidebar({ name }) {
               data-mdb-ripple-color="primaryhoverhover"
             >
               <Link href={"/transactions"}>
-                <GiReceiveMoney size={40} color="white" />
+                <GiTakeMyMoney size={40} color="white" />
               </Link>
             </div>
           </li>
@@ -163,7 +163,7 @@ export default function Sidebar({ name }) {
               data-mdb-ripple-color="primaryhoverhover"
             >
               <Link href={"/smartmatrix"}>
-                <GiCheckboxTree size={40} />
+                <MdEmojiPeople size={40} />
               </Link>
             </div>
           </li>

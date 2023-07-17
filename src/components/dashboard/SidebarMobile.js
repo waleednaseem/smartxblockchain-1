@@ -4,9 +4,9 @@ import { GrGoogleWallet } from "react-icons/gr";
 import { HiHome } from "react-icons/hi2";
 import { TbBusinessplan } from "react-icons/tb";
 import { SlLogout } from "react-icons/sl";
-import { BsCalculatorFill } from "react-icons/bs";
-import {GiCheckboxTree} from "react-icons/gi"
-import {GiReceiveMoney} from "react-icons/gi"
+import { MdEmojiPeople } from "react-icons/md";
+// import {MdEmojiPeople} from "react-icons/io"
+import {GiTakeMyMoney} from "react-icons/gi"
 import Link from "next/link";
 
 export default function SidebarMobile({name}) {
@@ -39,7 +39,7 @@ export default function SidebarMobile({name}) {
                 data-mdb-ripple="true"
                 data-mdb-ripple-color="primaryhoverhover"
               >
-                <GiReceiveMoney size={30} />
+                <GiTakeMyMoney size={30} />
               </Link>
             </div>
             
@@ -50,7 +50,7 @@ export default function SidebarMobile({name}) {
                 data-mdb-ripple="true"
                 data-mdb-ripple-color="primaryhoverhover"
               >
-                <GiCheckboxTree size={30} />
+                <MdEmojiPeople size={30} />
               </Link>
             </div>
 
@@ -63,7 +63,7 @@ export default function SidebarMobile({name}) {
                 data-mdb-ripple="true"
                 data-mdb-ripple-color="primaryhoverhover"
               >
-                <BsCalculatorFill size={30} />
+                <MdEmojiPeople size={30} />
               </Link>
             </div> */}
             <div className="">
